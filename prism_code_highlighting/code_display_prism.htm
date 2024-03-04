@@ -1,0 +1,88 @@
+<!-- 
+https://www.digitalocean.com/community/conceptual-articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code highlighting Prism</title>
+
+<!-- <link href="prism_twilight.css" rel="stylesheet"> -->
+<!-- <link href="prism_solarized.css" rel="stylesheet"> -->
+<!-- <link href="prism_coy.css" rel="stylesheet"> -->
+<!-- <link href="prism_tomorrow_night.css" rel="stylesheet"> -->
+<!-- <link href="prism_okaidia.css" rel="stylesheet"> -->
+
+<!-- <link href="prism-vsc-dark-plus.css" rel="stylesheet"> -->
+<!-- <link href="prism-atom-dark.css" rel="stylesheet"> -->
+<link href="prism-night-owl.css" rel="stylesheet">
+
+<style>
+* {
+    text-shadow: none;
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 26px;
+}
+
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+/*  background: #11192e;*/
+}
+
+pre .mark {
+    background: #29334d;
+    padding: 2px 6px;
+    
+}
+
+pre[class*="language-"].line-numbers span::before,
+.line-numbers .line-numbers-rows {
+    color: #444;
+    border-color: #444;
+}
+</style>
+
+<script src="prism.js"></script>
+
+</head>
+<body>
+
+<pre class="line-numbers"><code class="language-php">class AreaCalculator
+    {
+        protected $shapes;
+
+        public function __construct($shapes = [])
+        {
+            $this->shapes = $shapes;
+        }
+
+        public function sum()
+        {
+            <span class="mark">foreach ($this->shapes as $shape) {</span>
+                <span class="mark">if (is_a($shape, 'Square')) {</span>
+                    $area[] = pow($shape->length, 2);
+                } elseif (is_a($shape, 'Circle')) {
+                    $area[] = pi() * pow($shape->radius, 2);
+                }
+            }
+
+            return array_sum($area);
+        }
+
+        public function output()
+        {
+            return implode('', [
+              '',
+                  'Sum of the areas of provided shapes: ',
+                  $this->sum(),
+              '',
+          ]);
+        }
+    }
+</code></pre>
+
+</body>
+</html>

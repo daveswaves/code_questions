@@ -1,0 +1,634 @@
+<!-- http://localhost/code_qs/code_inspection.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code Inspection</title>
+
+<link href="prism_code_highlighting/prism-night-owl.css" rel="stylesheet">
+<!-- prism-vsc-dark-plus.css / prism_twilight.css / prism-atom-dark.css -->
+<style>
+	* {
+		text-shadow: none;
+		font-family: monospace;
+		font-size: 14px;
+		line-height: 22px;
+	}
+	.code_block {
+		display: inline-block;
+		border-radius: 10px;
+	}
+	.code_container {
+		float: left;
+		margin-right: 10px;
+	}
+	.ans_btn {
+		margin-top: 10px;
+		width: 40px;
+	}
+	.copy-to-clipboard-button {
+	/*	display: none !important;*/
+	}
+	
+	h2 {
+		font-weight: normal;
+		font-size: 40px;
+		background: #99c;
+		height: 60px;
+		line-height: 54px;
+		padding-left: 20px;
+		border-radius: 10px;
+		display: inline-block;
+		min-width: 600px;
+	}
+
+	pre .mark {
+		background: #29334d;
+		padding: 2px 6px;
+	}
+
+	/*h3:not(:first-of-type) {
+		padding-top: 40px;
+	}*/
+	p {
+		clear: left;
+		margin-bottom: 0;
+	}
+
+	.ans, .ans, .show {
+	/*	visibility: hidden;*/
+		display: none;
+	}
+
+	.footer {
+		clear: left;
+		margin-bottom: 800px;
+	}
+	
+	a:link, a:visited, a:active {
+		color: blue;
+		text-decoration: none;
+		font-family: verdana;
+		font-size: 18px;
+	}
+	a:hover {
+		color: #f00;
+	}
+</style>
+
+<script src="prism_code_highlighting/prism.js"></script>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+</head>
+<body>
+
+<div><a href="#php">PHP</a> | <a href="#jq">jQuery</a></div>
+
+
+<div id="php"></div>
+<h2>PHP</h2>
+
+<p>Reverse a String:<br>
+Write a function that reverses a given string.</p>
+
+<div><div class="code_container"><pre class="code_block"><code class="language-php">&lt;?php
+
+$res = reverse_str('123456');
+echo $res;
+
+function reverse_str($str)
+{
+	<span class="show">return strrev($str);</span><span class="hide">// CODE</span>
+}
+</code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button></div>
+
+<div style="clear: left; height: 100px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Palindrome Check:<br>Write a function to determine if a given string is a palindrome<br>
+(reads the same forwards and backwards), ignoring spaces, punctuation, and capitalization.</p>
+
+<div><div class="code_container"><pre class="code_block"><code class="language-php">&lt;?php
+
+$res = palindrome_check('repaper');
+echo $res;
+
+function palindrome_check($str)
+{
+	<span class="show">return ($str == strrev($str));</span><span class="hide">// CODE</span>
+}
+</code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button></div>
+
+<div style="clear: left; height: 100px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Convert a unix timestamp (eg. 1708419400) to a human-readable date/time format (eg. 2024-02-20 08:56)</p>
+<div><div class="code_container"><pre class="code_block"><code class="language-php">&lt;?php
+
+<span class="show">$date_from_timestamp = date("Y-m-d H:i", 1708419400);</span><span class="hide">// CODE</span>
+echo $date_from_timestamp;
+</code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button></div>
+
+<div style="clear: left; height: 100px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Anagram Detection:<br>
+Write a function that takes two strings and returns true if they're anagrams of each<br>
+other (contain the same characters with the same frequency), otherwise return false.</p>
+<div><div class="code_container"><pre class="code_block"><code class="language-php"><span class="hide">&lt;?php
+
+$str1 = 'listen';
+$str2 = 'silent';
+
+$res = anagram_check($str1, $str2) ? "'$str1' and '$str2' are anagrams." : "'$str1' and '$str2' are not anagrams.";
+echo $res;
+
+function anagram_check($str1, $str2)
+{
+	// CODE
+}
+</span><span class="show">&lt;?php
+
+$str1 = 'listen';
+$str2 = 'silent';
+
+$res = anagram_check($str1, $str2) ? "'$str1' and '$str2' are anagrams." : "'$str1' and '$str2' are not anagrams.";
+echo $res;
+
+function anagram_check($str1, $str2)
+{
+	function sort_str($str)
+	{
+		$str_arr = str_split($str);
+		sort($str_arr);
+		return implode('', $str_arr);
+	}
+	
+	return (sort_str($str1) == sort_str($str2));
+}
+</span></code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button>
+</div>
+
+<div style="clear: left; height: 100px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Write a function to find Missing Number:<br>
+Given an array containing n distinct numbers taken from 0, 1, 2, ..., n,<br>
+find the one that is missing from the array.</p>
+<div><div class="code_container"><pre class="code_block"><code class="language-php"><span class="hide">&lt;?php
+
+// Create a numeric array with values 1 to n
+// then randomly remove one of the numbers.
+$arr = range(1, 50);
+shuffle($arr);
+unset($arr[0]);
+sort($arr);
+
+$res = get_missing_arr_num($arr);
+echo $res;
+
+function get_missing_arr_num($arr)
+{
+	// Check if first item (1) is missing
+	// CODE
+	
+	// Check if last item (n) is missing
+	// CODE
+	
+	// Check for missing number, excluding first and last
+	// CODE
+}
+</span><span class="show">&lt;?php
+
+// Create a numeric array with values 1 to n
+// then randomly remove one of the numbers.
+$arr = range(1, 50);
+shuffle($arr);
+unset($arr[0]);
+sort($arr);
+
+$res = get_missing_arr_num($arr);
+echo $res;
+
+function get_missing_arr_num($arr)
+{
+	$last_num = count($arr)+1;
+	$n = $arr[count($arr)-1];
+	
+	// Check if first item (1) is missing
+	if (1 != $arr[0]) {
+		return 1;
+	}
+	// Check if last item (n) is missing
+	if ($last_num != $n) {
+		return $last_num;
+	}
+	// Check for missing number, excluding first and last
+	foreach ($arr as $i => $num) {
+		if (1 != $arr[$i+1] - $arr[$i]) {
+			return $arr[$i+1]-1;
+		}
+	}
+}
+</span></code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button>
+</div>
+
+<div style="clear: left; height: 100px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Only select correctly formatted skus:<br>
+Write a function that only returns skus containing letters,<br>
+numbers or underscores from an SQLite database.</p>
+<div><div class="code_container"><pre class="code_block"><code class="language-php"><span class="hide">&lt;?php
+
+$db = new PDO('sqlite:listings.db3');
+
+$res = sku_pattern('arg1', 'arg2', 'arg3', 'arg4');
+
+echo '&lt;pre>'; print_r($res); echo '&lt;/pre>';
+
+function sku_pattern($db, $tbl, $col, $pattern)
+{
+	// CODE
+}
+</span><span class="show">&lt;?php
+
+$db = new PDO('sqlite:listings.db3');
+
+$res = sku_pattern('arg1', 'arg2', 'arg3', 'arg4');
+
+echo '&lt;pre>'; print_r($res); echo '&lt;/pre>';
+
+function sku_pattern($db, $tbl, $col, $regex)
+{
+	// Define the REGEXP function for SQLite - required to use REGEXP
+	$db->sqliteCreateFunction('REGEXP', function($pattern, $subject) {
+	    return preg_match("/$pattern/", $subject);
+	}, 2);
+	
+	$sql = "SELECT `$col` FROM `$tbl` WHERE `$col` REGEXP '$regex'";
+	$res = $db->query($sql);
+	return $res->fetchAll(PDO::FETCH_COLUMN);
+}
+</span></code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button></div><br>
+
+<b><i>'listings.db3' database</i></b><br>
+<img src="db.png" alt="db" style="box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);">
+
+
+<div style="clear: left; height: 100px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="jq"></div>
+<h2>jQuery</h2>
+
+<p>What's the advantage of example 2?</p>
+<div><div class="code_container"><pre class="code_block"><code class="language-php"><span class="hide">&lt;input type="text" class="add_sku_txt">
+
+&lt;script>
+	// Example 1
+	<span class="mark">$('.add_sku_txt').on('input', function(){</span>
+		console.log($(this).val());
+	});
+	
+	// Example 2
+	<span class="mark">$(document).on('input', '.add_sku_txt', function(){</span>
+		console.log($(this).val());
+	});
+&lt;/script>
+</span><span class="show">&lt;input type="text" class="add_sku_txt">
+
+&lt;script>
+	// Example 1
+	<span class="mark">$('.add_sku_txt').on('input', function(){</span>
+		console.log($(this).val());
+	});
+	
+	/* Dynamic Element Binding
+	 * Example 1 does not work with dynamically generated content.
+	 */
+	// Example 2
+	<span class="mark">$(document).on('input', '.add_sku_txt', function(){</span>
+		console.log($(this).val());
+	});
+&lt;/script>
+</span></code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button></div>
+
+<div style="clear: left; height: 100px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>Where is the bug?</p>
+<div><div class="code_container"><pre class="code_block"><code class="language-php"><span class="hide">&lt;select id="waypoints">
+	&lt;option>Select&lt;/option>
+	&lt;option value="51.575869, -0.139325">Waypoint&lt;/option>
+&lt;/select>
+	
+	
+&lt;script>
+	$(function() {
+		$(document).on('change','.waypoints', function(){
+			let selectedOption = $(this).find('option:selected').text();
+			console.log(selectedOption);
+		});
+	});
+&lt;/script>
+</span><span class="show">// 'waypoints' is an id, not a class.
+&lt;select id="waypoints">
+	&lt;option>Select&lt;/option>
+	&lt;option value="51.575869, -0.139325">Waypoint&lt;/option>
+&lt;/select>
+	
+	
+&lt;script>
+	$(function() {
+		// Cannot find a class named 'waypoints'.
+		$(document).on('change','.waypoints', function(){
+			let selectedOption = $(this).find('option:selected').text();
+			/*** What will appear in the console when the bug is fixed? ***/
+			console.log(selectedOption);
+		});
+	});
+&lt;/script>
+</span></code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button></div>
+
+<div style="clear: left; height: 100px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><br>Add jQuery code to detect the checkbox state (checked/unchecked).
+Output status to console.</p>
+<div><div class="code_container"><pre class="code_block"><code class="language-php"><span class="hide">&lt;input type="checkbox" id="sku1" name="sku1" value="dec_stones_blue_slate_1kg">&lt;label for="sku1">dec_stones_blue_slate_1kg&lt;/label>
+
+&lt;input type="submit" class="btn w80 dis-no" id="del_sku" value="delete">
+
+&lt;script>
+	$(function() {
+		// CODE
+	});
+&lt;/script>
+</span><span class="show">&lt;input type="checkbox" id="sku1" name="sku1" value="dec_stones_blue_slate_1kg">&lt;label for="sku1">dec_stones_blue_slate_1kg&lt;/label>
+
+&lt;input type="submit" class="btn w80 dis-no" id="del_sku" value="delete">
+
+&lt;script>
+	$(function() {
+		// Detect checkbox state - checked/unchecked
+		$(document).on('change', '#sku1', function(){
+			if ($(this).is(':checked')) {
+				console.log('Checked');
+			}
+			else {
+				console.log('Unchecked');
+			}
+		});
+	});
+&lt;/script>
+</span></code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button></div>
+
+<div style="clear: left; height: 100px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><br>Modify existing code to show/hide submit button when checkbox checked/unchecked</p>
+<div><div class="code_container"><pre class="code_block"><code class="language-php"><span class="hide">&lt;input type="checkbox" id="sku1" name="sku1" value="dec_stones_blue_slate_1kg">&lt;label for="sku1">dec_stones_blue_slate_1kg&lt;/label>
+
+&lt;input type="submit" class="btn w80 dis-no" id="del_sku" value="delete">
+
+&lt;script>
+	$(function() {
+		$(document).on('change', '#sku1', function(){
+			if ($(this).is(':checked')) {
+				// CODE
+			}
+			else {
+				// CODE
+			}
+		});
+	});
+&lt;/script>
+</span><span class="show">&lt;input type="checkbox" id="sku1" name="sku1" value="dec_stones_blue_slate_1kg">&lt;label for="sku1">dec_stones_blue_slate_1kg&lt;/label>
+
+&lt;input type="submit" class="btn w80 dis-no" id="del_sku" value="delete">
+
+&lt;script>
+	$(function() {
+		// Show/hide 'delete' button when checkbox checked/unchecked
+		$(document).on('change', '#sku1', function(){
+			if ($(this).is(':checked')) {
+				$('#del_sku').css({'display': 'block'});
+			}
+			else {
+				$('#del_sku').css({'display': 'none'});
+			}
+		});
+	});
+&lt;/script>
+</span></code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button></div>
+
+<div style="clear: left; height: 100px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><br>Modify the existing code so that the submit button only disappears when all checkboxes are unchecked.</p>
+<div><div class="code_container"><pre class="code_block"><code class="language-php"><span class="hide">&lt;input type="checkbox" id="sku1" name="sku1" value="dec_stones_blue_slate_1kg">&lt;label for="sku1">dec_stones_blue_slate_1kg&lt;/label>&lt;br>
+&lt;input type="checkbox" id="sku2" name="sku2" value="AGGREGATE_BLUE_SLATE-1KG">&lt;label for="sku2">AGGREGATE_BLUE_SLATE-1KG&lt;/label>&lt;br>
+&lt;input type="checkbox" id="sku3" name="sku3" value="blue_slate_1kg">&lt;label for="sku3">blue_slate_1kg&lt;/label>
+
+&lt;input type="submit" class="btn w80 dis-no" id="del_sku" value="delete">
+
+&lt;script>
+	$(function() {
+		$(document).on('change', '#sku1', function(){
+			if ($(this).is(':checked')) {
+				$('#del_sku').css({'display': 'block'});
+			}
+			else {
+				$('#del_sku').css({'display': 'none'});
+			}
+		});
+	});
+&lt;/script>
+</span><span class="show">&lt;input type="checkbox" class="sku_chk" id="sku1" name="sku1" value="dec_stones_blue_slate_1kg">&lt;label for="sku1">dec_stones_blue_slate_1kg&lt;/label>&lt;br>
+&lt;input type="checkbox" class="sku_chk" id="sku2" name="sku2" value="AGGREGATE_BLUE_SLATE-1KG">&lt;label for="sku2">AGGREGATE_BLUE_SLATE-1KG&lt;/label>&lt;br>
+&lt;input type="checkbox" class="sku_chk" id="sku3" name="sku3" value="blue_slate_1kg">&lt;label for="sku3">blue_slate_1kg&lt;/label>
+
+&lt;input type="submit" class="btn w80 dis-no" id="del_sku" value="delete">
+
+&lt;script>
+	$(function() {
+		$(document).on('change', '#sku1', function(){
+			if ($(this).is(':checked')) {
+				$('#del_sku').css({'display': 'block'});
+				totalChkd++;
+			}
+			else {
+				totalChkd--;
+			}
+			
+			if (0 === totalChkd) {
+				$('#del_sku').css({'display': 'none'});
+			}
+		});
+	});
+&lt;/script>
+</span></code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button></div>
+
+<div class="footer"></div>
+
+
+
+
+<!-- ///////////////////////////////////////////////////////// -->
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+	$(function() {
+		$(document).on('click','.ans_btn', function(){
+			let $container = $(this).prevAll('.code_container').first();
+			$container.find('.hide').hide();
+			$container.find('.show').show();
+		});
+		
+		
+		// $('.answer2').css('visibility', 'visible');
+		/*$(document).on('click','.ans_btn', function(){
+			let scroll = $(window).scrollTop();
+			console.log(scroll);
+			$("body").scrollTop(scroll);
+		});*/
+	});
+</script>
+
+</body>
+</html>
