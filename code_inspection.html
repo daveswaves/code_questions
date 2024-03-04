@@ -604,10 +604,86 @@ Output status to console.</p>
 
 <button class="ans_btn" onclick="return false">?</button></div>
 
+<div style="clear: left; height: 100px;"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><br>jQuery code to retrieve the contents of the  &lt;td> cells when the anchor tag on the same row is clicked.</p>
+<div><div class="code_container"><pre class="code_block"><code class="language-php"><span class="hide">&lt;table>
+	&lt;tr>
+		&lt;td class="sku">00000&lt;/td>
+		&lt;td class="title">12 Cell Bedding Plant Pack Tray Inserts for Half Size Seed Trays x 100&lt;/td>
+		&lt;td class="weight">2.6&lt;/td>
+		&lt;td class="length">0.26&lt;/td>
+		&lt;td>&lt;a href="" onclick="return false;">Edit&lt;/a>&lt;/td>
+	&lt;/tr>
+	&lt;tr>
+		&lt;td class="sku">00001&lt;/td>
+		&lt;td class="title">200 x 12 Cell Bedding Plant Pack Tray Inserts for Half Size Seed Trays&lt;/td>
+		&lt;td class="weight">5.2&lt;/td>
+		&lt;td class="length">0.26&lt;/td>
+		&lt;td>&lt;a href="" onclick="return false;">Edit&lt;/a>&lt;/td>
+	&lt;/tr>
+&lt;/table>
+
+&lt;script src="jquery.js">&lt;/script>
+&lt;script>
+$(function() {
+	$('a').on('click', function() {
+		// CODE
+	});
+});
+&lt;/script>
+</span><span class="show">&lt;table>
+	&lt;tr>
+		&lt;td class="sku">00000&lt;/td>
+		&lt;td class="title">12 Cell Bedding Plant Pack Tray Inserts for Half Size Seed Trays x 100&lt;/td>
+		&lt;td class="weight">2.6&lt;/td>
+		&lt;td class="length">0.26&lt;/td>
+		&lt;td>&lt;a href="" onclick="return false;">Edit&lt;/a>&lt;/td>
+	&lt;/tr>
+	&lt;tr>
+		&lt;td class="sku">00001&lt;/td>
+		&lt;td class="title">200 x 12 Cell Bedding Plant Pack Tray Inserts for Half Size Seed Trays&lt;/td>
+		&lt;td class="weight">5.2&lt;/td>
+		&lt;td class="length">0.26&lt;/td>
+		&lt;td>&lt;a href="" onclick="return false;">Edit&lt;/a>&lt;/td>
+	&lt;/tr>
+&lt;/table>
+
+&lt;script src="jquery.js">&lt;/script>
+&lt;script>
+$(function() {
+	$('a').on('click', function() {
+		<span class="mark">let row = $(this).closest('tr');</span>
+		
+		<span class="mark">let sku = row.find('.sku').text();</span>
+		<span class="mark">let title = row.find('.title').text();</span>
+		<span class="mark">let weight = row.find('.weight').text();</span>
+		<span class="mark">let length = row.find('.length').text();</span>
+		
+		<span class="mark">console.log("SKU:", sku, "|", "Title:", title, "|", "Weight:", weight, "|", "Length:", length);</span>
+	});
+});
+&lt;/script>
+</span></code></pre></div>
+
+<button class="ans_btn" onclick="return false">?</button></div>
+
+
+
+
 <div class="footer"></div>
-
-
-
 
 <!-- ///////////////////////////////////////////////////////// -->
 

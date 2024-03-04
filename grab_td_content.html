@@ -1,0 +1,53 @@
+<!--
+http://localhost/code_questions/grab_td_content.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Table Data</title>
+
+</head>
+<body>
+
+<table>
+	<tr>
+		<td class="sku">00000</td>
+		<td class="title">12 Cell Bedding Plant Pack Tray Inserts for Half Size Seed Trays x 100</td>
+		<td class="weight">2.6</td>
+		<td class="length">0.26</td>
+		<td><a href="" onclick="return false;">Edit</a></td>
+	</tr>
+	<tr>
+		<td class="sku">00001</td>
+		<td class="title">200 x 12 Cell Bedding Plant Pack Tray Inserts for Half Size Seed Trays</td>
+		<td class="weight">5.2</td>
+		<td class="length">0.26</td>
+		<td><a href="" onclick="return false;">Edit</a></td>
+	</tr>
+</table>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+$(function() {
+	$('a').on('click', function() {
+		let row = $(this).closest('tr');
+		
+		let sku = row.find('.sku').text();
+		let title = row.find('.title').text();
+		let weight = row.find('.weight').text();
+		let length = row.find('.length').text();
+		
+		console.log(
+			"SKU:", sku, "|",
+			"Title:", title, "|",
+			"Weight:", weight, "|",
+			"Length:", length
+		);
+	});
+});
+</script>
+</body>
+</html>
